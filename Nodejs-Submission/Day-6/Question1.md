@@ -1,5 +1,3 @@
-# Node.js Core Modules - Interview Guide
-
 ## Q1: What are core modules in Node.js? Name at least 10.
 
 ### Answer:
