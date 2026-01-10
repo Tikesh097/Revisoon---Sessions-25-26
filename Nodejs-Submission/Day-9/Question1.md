@@ -1,5 +1,3 @@
-# Database Scaling and Performance Q&A
-
 ## 1. What is database scaling? Explain vertical vs horizontal scaling.
 
 Database scaling is increasing the capacity of a database to handle more load.
