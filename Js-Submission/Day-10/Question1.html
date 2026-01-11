@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Dynamic Search Filter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    input {
+      padding: 8px;
+      width: 300px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 6px 0;
+    }
+
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+
+    .count {
+      margin: 10px 0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Product Search</h2>
+  <input type="text" id="searchInput" placeholder="Search by name or category..." />
+  <div class="count" id="count"></div>
+  <ul id="itemList"></ul>
+
+  <script>
+    const items = [
+      { id: 1, name: 'MacBook Pro', category: 'Electronics' },
+      { id: 2, name: 'Nike Shoes', category: 'Footwear' },
+      { id: 3, name: 'iPhone 15', category: 'Electronics' },
+      { id: 4, name: 'Adidas Jacket', category: 'Clothing' },
+      { id: 5, name: 'Sony Headphones', category: 'Electronics' }
+    ];
+
+    const searchInput = document.getElementById('searchInput');
+    const itemList = document.getElementById('itemList');
+    const count = document.getElementById('count');
+
+    function highlightText(text, search) {
+      if (!search) return text;
+      const regex = new RegExp(`(${search})`, 'gi');
+      return text.replace(regex, `<span class="highlight">$1</span>`);
+    }
+
+    function renderList(filteredItems, searchValue) {
+      itemList.innerHTML = '';
+
+      filteredItems.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          ${highlightText(item.name, searchValue)} 
+          - 
+          ${highlightText(item.category, searchValue)}
+        `;
+        itemList.appendChild(li);
+      });
+
+      count.textContent = `Showing ${filteredItems.length} item(s)`;
+    }
+    renderList(items, '');
+
+    searchInput.addEventListener('input', () => {
+      const searchValue = searchInput.value.toLowerCase();
+
+      const filteredItems = items.filter(item =>
+        item.name.toLowerCase().includes(searchValue) ||
+        item.category.toLowerCase().includes(searchValue)
+      );
+
+      renderList(filteredItems, searchValue);
+    });
+  </script>
+
+</body>
+
+</html>

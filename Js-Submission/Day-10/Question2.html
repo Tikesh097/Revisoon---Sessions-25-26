@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sortable Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 400px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            cursor: pointer;
+            background-color: #f4f4f4;
+        }
+
+        .indicator {
+            margin-left: 6px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Sortable Employee Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th data-key="name">Name <span class="indicator"></span></th>
+                <th data-key="age">Age <span class="indicator"></span></th>
+                <th data-key="salary">Salary <span class="indicator"></span></th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+        const tableData = [
+            { name: 'John', age: 25, salary: 50000 },
+            { name: 'Alice', age: 30, salary: 75000 },
+            { name: 'Bob', age: 22, salary: 45000 },
+            { name: 'Charlie', age: 35, salary: 90000 }
+        ];
+
+        const tbody = document.getElementById('tableBody');
+        const headers = document.querySelectorAll('th');
+
+        let currentSort = {
+            key: null,
+            direction: 'asc'
+        };
+
+        function renderTable(data) {
+            tbody.innerHTML = '';
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+          <td>${row.name}</td>
+          <td>${row.age}</td>
+          <td>${row.salary}</td>
+        `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function sortData(key) {
+            const isSameColumn = currentSort.key === key;
+            currentSort.direction = isSameColumn && currentSort.direction === 'asc'
+                ? 'desc'
+                : 'asc';
+            currentSort.key = key;
+
+            tableData.sort((a, b) => {
+                if (typeof a[key] === 'string') {
+                    return currentSort.direction === 'asc'
+                        ? a[key].localeCompare(b[key])
+                        : b[key].localeCompare(a[key]);
+                }
+                return currentSort.direction === 'asc'
+                    ? a[key] - b[key]
+                    : b[key] - a[key];
+            });
+
+            updateIndicators();
+            renderTable(tableData);
+        }
+
+        function updateIndicators() {
+            headers.forEach(header => {
+                const indicator = header.querySelector('.indicator');
+                indicator.textContent = '';
+                if (header.dataset.key === currentSort.key) {
+                    indicator.textContent = currentSort.direction === 'asc' ? '▲' : '▼';
+                }
+            });
+        }
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                sortData(header.dataset.key);
+            });
+        });
+
+        renderTable(tableData);
+    </script>
+
+</body>
+
+</html>
