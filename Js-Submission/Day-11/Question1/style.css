@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f5f7fa;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  margin-top: 30px;
+  color: #333;
+}
+
+/* Products & Cart Containers */
+#products,
+#cart {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Product & Cart Item */
+#products div,
+#cart div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#products div:last-child,
+#cart div:last-child {
+  border-bottom: none;
+}
+
+/* Buttons */
+button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #4f46e5;
+  color: white;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #4338ca;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Quantity buttons */
+button:nth-child(2),
+button:nth-child(4) {
+  background-color: #10b981;
+}
+
+button:nth-child(2):hover,
+button:nth-child(4):hover {
+  background-color: #059669;
+}
+
+/* Remove button */
+button:last-child {
+  background-color: #ef4444;
+}
+
+button:last-child:hover {
+  background-color: #dc2626;
+}
+
+/* Summary */
+#summary {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+strong {
+  font-size: 18px;
+  color: #111827;
+}
