@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f4;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticker-card {
+  background: white;
+  padding: 20px 25px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.ticker-card h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.stock-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.stock-row:last-child {
+  border-bottom: none;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.price.up {
+  color: green;
+}
+
+.price.down {
+  color: red;
+}
+
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 8px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,78 @@
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page base styling */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* App container */
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Settings panel card */
+.settings {
+  background: #ffffff;
+  padding: 20px 25px;
+  border-radius: 8px;
+  width: 350px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.settings h2 {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Each setting row */
+.setting-row {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Labels */
+.setting-row label {
+  font-weight: 500;
+}
+
+/* Select & checkbox */
+select {
+  padding: 5px;
+}
+
+/* Reset button */
+button {
+  width: 100%;
+  padding: 8px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Debug JSON output */
+pre {
+  margin-top: 15px;
+  background: #f0f0f0;
+  padding: 10px;
+  font-size: 13px;
+  border-radius: 4px;
+}
