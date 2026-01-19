@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mini Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>User Dashboard</h1>
+    <input type="text" id="search" placeholder="Search by name or email" />
+
+    <select id="domainFilter">
+        <option value="">All Domains</option>
+    </select>
+
+    <div id="stats">
+        <p>Total Users: <span id="totalUsers">0</span></p>
+        <p>Average Posts/User: <span id="avgPosts">0</span></p>
+    </div>
+
+    <p id="loading">Loading...</p>
+    <p id="error"></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th id="sortName">Name ⬍</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
