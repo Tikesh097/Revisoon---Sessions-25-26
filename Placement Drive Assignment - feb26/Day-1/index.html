@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScopeQuest — Hoisting & Closure Lab</title>
+</head>
+<body>
+    
+</body>
+ <!-- UI PART -->
+
+ <h2>Part 1: The Hoisting Experiment </h2>
+ <button onclick="runHoistingTest()">Test Hoisting</button>
+ <div id="output"></div>
+
+<!-- -------------------------------------------------------------------------------------------- -->
+
+  <h2>The Closure Loop (The "Buggy" Buttons)</h2>
+
+  <h3>Buggy Button</h3>
+  <div id="buggyButtons"></div>
+
+  <h3>Fixed Button</h3>
+  <div id="fixedButtons"></div>
+
+<!-- -------------------------------------------------------------------------------------------- -->
+
+  
+<!--Part 3: The Private Counter -->
+
+<section>
+    <h2>Private Counter</h2>
+    <button id="decrementBtn">−</button>
+    <button id="incrementBtn">+</button>
+    <div class="output" id="counterValue"></div>
+</section>
+
+<!--Block Scope -->
+<section>
+    <h2>Block Scope Visualizer</h2>
+    <button id="blockTestBtn">Test Block Scope</button>
+    <div class="output" id="blockOutput"></div>
+</section>
+
+<!-- Execution Timer -->
+<section>
+    <h2>Execution Timer</h2>
+    <button id="timerBtn">How many seconds since page load?</button>
+</section>
+
+
+<!-- Code Logic Section Starts From Here.... -->
+<script>
+
+    //Part 1: The Hoisting Experiment 
+    function runHoistingTest() {
+        var output = document.getElementById("output")
+        output.innerHTML = "";
+
+        output.innerHTML += "var value : " + a + "<br>";
+
+        try {
+            output.innerHTML += "let value" + b + "<br>";
+        } catch (error) {
+            output.innerHTML += "let error: " + error.message + "<br>";
+        }
+
+        try {
+            output.innerHTML += "const value" + c + "<br>";
+        } catch (error) {
+            output.innerHTML += "const error: " + error.message + "<br>";
+        }
+
+        var a = 10;
+        let b = 20;
+        const c = 30;
+    }
+
+    //--------------------------------------------------------------------------------------------
+
+    //Part 2: The Closure Loop (The "Buggy" Buttons) 
+
+    //The Bug
+    var buggyPart = document.getElementById("buggyButtons")
+    for (var i = 1; i <= 5; i++) {
+        var btn = document.createElement("button");
+        btn.textContent = "Button " + i;
+        btn.addEventListener("click", function () {
+            alert("Button " + i);
+        });
+        buggyButtons.appendChild(btn);
+    }
+
+    //The Fix
+    var fixedContainer = document.getElementById("fixedButtons")
+    function createClickHandler(number) {
+        return function () {
+            alert("Button " + number);
+        };
+    }
+
+    for (var j = 1; j <= 5; j++) {
+        var fixedBtn = document.createElement("button");
+        fixedBtn.textContent = "Button " + j;
+        fixedBtn.addEventListener("click", createClickHandler(j));
+        fixedContainer.appendChild(fixedBtn);
+    }
+
+    //--------------------------------------------------------------------------------------------
+
+    //Part 3: The Private Counter
+    function createCounter() {
+        var count = 0;
+
+        return {
+            increment: function () {
+                count++;
+            },
+            decrement: function () {
+                count--;
+            },
+            getValue: function () {
+                return count;
+            }
+        };
+    }
+
+    var counter = createCounter();
+
+    var counterDisplay = document.getElementById("counterValue");
+    var incBtn = document.getElementById("incrementBtn");
+    var decBtn = document.getElementById("decrementBtn");
+
+    function updateCounterUI() {
+        counterDisplay.textContent = "Current Value: " + counter.getValue();
+    }
+
+    incBtn.addEventListener("click", function () {
+        counter.increment();
+        updateCounterUI();
+    });
+
+    decBtn.addEventListener("click", function () {
+        counter.decrement();
+        updateCounterUI();
+    });
+
+    updateCounterUI();
+
+
+    //Block scope Visualizer
+    var blockBtn = document.getElementById("blockTestBtn");
+    var blockOutput = document.getElementById("blockOutput");
+
+    blockBtn.addEventListener("click", function () {
+        blockOutput.innerHTML = "";
+
+        {
+            let secret = "I exist only inside this block";
+            blockOutput.innerHTML += "Inside block: " + secret + "<br>";
+        }
+
+        try {
+            blockOutput.innerHTML += secret;
+        } catch (err) {
+            blockOutput.innerHTML += "Outside block error: " + err.message;
+        }
+    });
+
+    //Execution Timer Part
+    function createStopwatch() {
+        var startTime = Date.now();
+
+        return function () {
+            var secondsPassed = Math.floor((Date.now() - startTime) / 1000);
+            alert(secondsPassed + " seconds since page load");
+        };
+    }
+
+    var stopwatch = createStopwatch();
+
+    document.getElementById("timerBtn")
+        .addEventListener("click", stopwatch);
+
+</script>
+</html>
