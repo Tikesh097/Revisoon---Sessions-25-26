@@ -3,7 +3,7 @@ import PostCard from "./PostCard"
 
 
 function PostList() {
-    const [posts, userById, loading, error] = usePosts();
+    const {posts, userById, loading, error} = usePosts();
 
     if (loading) {
         return <p className="status-text">Loading posts...</p>;
