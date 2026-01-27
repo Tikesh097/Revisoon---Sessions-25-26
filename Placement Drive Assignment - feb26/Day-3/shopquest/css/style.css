@@ -1,0 +1,139 @@
+/* ---------- Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ---------- Body ---------- */
+body {
+  background-color: #f5f6fa;
+  padding: 20px;
+  color: #333;
+}
+
+/* ---------- Headings ---------- */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2, h3 {
+  margin: 20px 0 10px;
+}
+
+/* ---------- Controls ---------- */
+#search {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 0 auto 20px;
+  display: block;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* ---------- Status ---------- */
+#status {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #e67e22;
+  font-weight: bold;
+}
+
+/* ---------- Products Grid ---------- */
+#products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+/* ---------- Product Card ---------- */
+#products > div {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#products h4 {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+#products p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  padding: 8px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* ---------- Cart ---------- */
+#cart-items {
+  background: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#cart-items p {
+  margin-bottom: 5px;
+}
+
+/* ---------- Checkout Button ---------- */
+#checkout-btn {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #27ae60;
+}
+
+#checkout-btn:hover {
+  background-color: #1e8449;
+}
+
+/* ---------- Developer Panel ---------- */
+#dev-panel {
+  margin-top: 30px;
+  background: #111;
+  color: #0f0;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+#dev-panel ul {
+  list-style: none;
+}
+
+#dev-panel li {
+  font-size: 12px;
+  margin-bottom: 5px;
+  border-bottom: 1px dashed #333;
+  padding-bottom: 3px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}
