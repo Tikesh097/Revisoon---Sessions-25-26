@@ -1,0 +1,49 @@
+body {
+  font-family: Arial;
+  background: #63bcbff8;
+  margin: 0;
+}
+
+header {
+  padding: 15;
+  background: #423972;
+  color: white;
+}
+
+#feed {
+  padding: 20px;
+}
+
+.post {
+  background: rgba(67, 67, 68, 0.174);
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.highlight {
+  border-left: 5px solid orange;
+}
+
+.user-separator {
+  background: #ddd;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+#modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  padding: 40px;
+}
+
+#modalContent {
+  background: white;
+  padding: 20px;
+}
